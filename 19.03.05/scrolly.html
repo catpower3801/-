@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>scrolly</title>
+        <link rel="stylesheet" href="css/cssanimation.css">
+        <style>
+            body{
+                height:6000px;
+            }
+            div{
+                width:300px;
+                height:200px;
+                border:4px solid #000;
+            }
+            .box1{
+                position:absolute;
+                top:40px;
+                left:40px;
+            }
+            .box2{
+                position:absolute;
+                top:400px;
+                right:40px;
+            }
+            .box3{
+                position:absolute;
+                top:1200px;
+                left:40px;
+            }
+            .box4{
+                position:absolute;
+                top:2000px;
+                right:40px;
+            }
+            section{
+                position:relative;
+                height:2300px;
+            }
+            .con{
+                width:940px;
+                margin:40px auto;
+            }
+            .con::after{
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .con .item{
+                width:33.33%;
+                border:2px solid #000;
+                box-sizing:border-box;
+                float:left;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="http://scrollyjs.com/" target="_blank">http://scrollyjs.com/</a>
+        <section>
+            <div class="box1" data-scrolly-top='blurInBottom' data-scrolly-down='blurInTop'></div>
+            <div class="box2" data-scrolly-down='leSpinInRight' data-scrolly-top='leSpinInLeft'></div>
+            <div class="box3"></div>
+            <div class="box4"></div>
+        </section>
+        <div class="con">
+            <div class="item" data-scrolly-down='blurInTop'></div>
+            <div class="item" data-scrolly-down='blurInTop, delay:0.2s'></div>
+            <div class="item" data-scrolly-down='blurInTop, delay:0.4s'></div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/scrolly.min.js"></script>
+        <script>
+            scrolly();
+            /*
+                scrolly.js
+                1. 자바스크립트 라이브러리이므로 제이쿼리가 불필요하다
+                2. 액션은 크게, 두가지로 나뉨
+                data-scrolly-top, data-scrolly-down
+                3.기존 구조에서 초기값으로 추가해야할 css가 없다.
+                4.반드시 cssanimation.css 파일이 함께 연결되어 있어야 한다.
+            */
+        </script>
+    </body>
+</html>

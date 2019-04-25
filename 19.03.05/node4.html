@@ -1,0 +1,69 @@
+<!doctype html>
+<html long="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>node 추가 제거</title>
+        <style>
+            ul li:last-child{
+                background:gold;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="del">삭제하기</button>
+        <button class="hide">숨기기</button>
+        <button class="add1">추가1</button>
+        <button class="add2">추가2</button>
+        <ul>
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+            <li>list4</li>
+            <li>list5</li>
+            <li>list6</li>
+            <li>list7</li>
+            <li>list8</li>
+            <li>list9</li>
+            <li>list10</li>
+        </ul>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script>
+            $('.hide').on('click',function(){
+                $('li').last().hide();
+            });
+            $('.del').on('click',function(){
+                $('li').last().remove();
+                if(i>0){
+                    i--;
+                }
+            });
+            //노드 추가 -> 자식 노드 추가
+            /*
+            prepend() 첫번째 자식으로 추가
+            append() 마지막 자식으로 추가
+            */
+            var i =10;
+            /*
+            호이스팅
+            함수와 변수는 만들어졌을때, 자동으로 가장 위에서 선언된다.
+            그렇지만 값이 할당되는것은 해당구문에서 할당이 된다.
+            */
+            console.log(a);//undefined
+            var a= 38498;//a에 값이 할당
+            $('.add1').on('click',function(){
+                $('ul').prepend('<li>New item</li>');
+            });
+            $('.add2').on('click',function(){
+                i++
+                $('ul').append('<li>list'+i+'</li>')
+            })
+            /*
+                hide() display none 처리 해주는 메서드
+                반대 show()
+                
+                remove()노드 자체를 완전히 삭제하는 매서드,
+                인덱스 상에서도 삭제가 되어서 집계되지 않는다.
+            */
+        </script>
+    </body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>slick</title>
+        <link rel="stylesheet" href="css/slick.css">
+        <style>
+            .wrap1 {
+                width:500px;
+                height:350px;
+                border:2px solid #000;
+                position:absolute;
+                left:50%;
+                margin-left:-400px;
+                top:40px;
+            }
+            .wrap1 .box{
+                width:100%;
+                height:350px;
+            }
+            .wrap1 .box1{
+                background:gold;
+            }
+            .wrap1 .box2{
+                background:orange;
+            }
+            .wrap1 .box3{
+                background:dodgerblue;
+            }
+            .wrap1 .box4{
+                background:deeppink;
+            }
+            .wrap1 .box5{
+                background:darkviolet;
+            }
+            .wrap2{
+                width:250px;
+                height:100px;
+                border:2px solid #000;
+                position:absolute;
+                top:160px;
+                left:50%;
+                background:#fff;
+            }
+            .wrap2 .txt{
+                width:100%;
+                height:100px;
+                font-size:30px;
+                text-align:center;
+                line-height:100px;
+                text-transform:uppercase;/*영어대문자로 출력*/
+                font-family:arial;
+                font-weight:900;
+            }
+            section{
+                height:600px;
+            }
+            .center{}
+            .center .item{
+                width:200px;
+                height:120px;
+                font-size:80px;
+                line-height:120px;
+                text-align:center;
+            }
+            .center .item span{
+                display:block;
+                width:80%;
+                height:80%;
+                margin:0 auto;
+                border:4px solid skyblue;
+            }
+            .center .slick-center{
+                transform:scale(1.2);
+            /*
+                센터에 오는 아이템의 형태를 바꾸기 위한 선택지
+            */
+            }
+            .center .slick-list{
+                padding: 30px 0 !important;
+                /*
+                    전체 아이템을 감싸고 있는 태그, slick-center의 스케일이 커지면서
+                    overflow hidden으로 넘어가는 값들이 감취지기에 padding값을 줌
+                */
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="wrap1">
+                <div class="box box1"></div>
+                <div class="box box2"></div>
+                <div class="box box3"></div>
+                <div class="box box4"></div>
+                <div class="box box5"></div>
+            </div>
+            <div class="wrap2">
+                <div class="txt txt1">
+                    gold
+                </div>
+                <div class="txt txt2">
+                    orange
+                </div>
+                <div class="txt txt3">
+                    dodgerblue
+                </div>
+                <div class="txt txt4">
+                    deeppink
+                </div>
+                <div class="txt txt5">
+                    darkviolet
+                </div>
+            </div>
+        </section>
+        <div id="ctrl">
+            <a href="#" class="prev">이전</a>
+            <a href="#" class="next">다음</a>
+        </div>
+        <div class="center">
+            <div class="item"><span>1</span></div>
+            <div class="item"><span>2</span></div>
+            <div class="item"><span>3</span></div>
+            <div class="item"><span>4</span></div>
+            <div class="item"><span>5</span></div>
+            <div class="item"><span>6</span></div>
+            <div class="item"><span>7</span></div>
+            <div class="item"><span>8</span></div>
+            <div class="item"><span>9</span></div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/slick.min.js"></script>
+        <script>
+            /*
+                prev,next   ->controler(bx)
+                            ->arrow(슬릭)
+                        
+                pagerbutton ->pager(bx)
+                            ->dots(슬릭)
+            */
+            $('.wrap1').slick({
+                'nextArrow' : '#ctrl .next',
+                'prevArrow' : '#ctrl .prev',
+                'asNavFor' : '.wrap2',
+                autoplay : true,
+                autoplaySpeed : 2000,
+                dots : true,
+                customPaging: function(s,i){
+                    return "<a href='#' class='pager'>"+i+"</a>";
+                }
+            });
+            $('.wrap2').slick({
+                'nextArrow' : '#ctrl .next',
+                'prevArrow' : '#ctrl .prev',
+                'asNavFor' : '.wrap1'
+            });
+            $('.center').slick({
+                slidesToShow : 5,
+                centerMode:true,
+                centerPadding:'60px'
+            });
+            /*
+                slick js 커스텀페이저 만들기
+                customPaging
+                dots:true 가 되어 있어야 커스텀 페이저도 생김
+                
+                index에 해당하는 매개변수가 생성되는 페이저버튼의
+                인덱스넘버로 연결됨
+                customPaging : function(slide, index){
+                    return 출력할 형태
+                }
+            */
+        </script>
+    </body>
+</html>
